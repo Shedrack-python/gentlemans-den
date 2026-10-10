@@ -19,19 +19,27 @@ const services = [
   { name: "Premium Grooming", description: "Haircut, beard care and finishing touches.", price: "₦12,000" },
 ];
 
-const bookingNumber = "2348000000000";
+const bookingNumber = "";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const book = (service = "an appointment") => {
-    const message = `Hello, I'd like to book ${service} at The Gentleman's Den.`;
-    window.open(
-      `https://wa.me/${bookingNumber}?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer"
+const book = (service = "an appointment") => {
+  if (!bookingNumber) {
+    window.alert(
+      "This is a portfolio demo. Contact Nuvora Digital Studio to create a booking website for your business."
     );
-  };
+    return;
+  }
+
+  const message = `Hello, I'd like to book ${service} at The Gentleman's Den.`;
+
+  window.open(
+    `https://wa.me/${bookingNumber}?text=${encodeURIComponent(message)}`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+};
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -176,11 +184,11 @@ export default function App() {
         <div className="visit-details">
           <div className="detail-row">
             <MapPin />
-            <div><strong>OUR LOCATION</strong><p>Your street address, city</p></div>
+            <div><strong>OUR LOCATION</strong><p>Demo location — address to be supplied by the client</p></div>
           </div>
           <div className="detail-row">
             <Clock3 />
-            <div><strong>OPENING HOURS</strong><p>Mon – Sat · 9:00 AM – 8:00 PM</p><p>Sunday · By appointment</p></div>
+            <div><strong>OPENING HOURS</strong><p>Sample hours - to be confirmed</p><p>Final hours set by the business owner</p></div>
           </div>
           <div className="detail-row">
             <Scissors />
